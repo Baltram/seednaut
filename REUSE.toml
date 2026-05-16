@@ -1,0 +1,19 @@
+version = 1
+SPDX-PackageName = "seednaut"
+
+[[annotations]]
+path = "**"
+precedence = "closest"
+SPDX-FileCopyrightText = "2026 @Baltram"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
+
+[[annotations]]
+path = [
+    "proto/snapshot.proto",
+    "proto/backup_snapshot.proto",
+    "proto/backup_media_file.proto",
+    "proto/backup_document_file.proto"
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2021, 2024 The Calyx Institute"
+SPDX-License-Identifier = "Apache-2.0"

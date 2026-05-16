@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Build & Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy,rustfmt
+
+      - name: Cache cargo registry
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-bin: false # Workaround for potentially broken macOS runner image
+
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "23.x"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: cargo build --locked --verbose
+
+      - name: Run tests
+        run: cargo test --locked --verbose
+
+      - name: Run clippy
+        run: cargo clippy --locked --all-targets --all-features -- -D warnings
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Upload Debug Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-binary-${{ matrix.os }}
+          path: |
+            target/debug/seednaut
+            target/debug/seednaut.exe
+          if-no-files-found: error

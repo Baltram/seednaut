@@ -1,0 +1,51 @@
+[package]
+name = "seednaut"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88.0"
+exclude = [".github/"]
+description = "A command-line utility for inspecting, verifying, and extracting Seedvault Android backups"
+keywords = ["seedvault", "android", "backup", "cli"]
+categories = ["command-line-utilities", "filesystem", "cryptography"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Baltram/seednaut"
+homepage = "https://github.com/Baltram/seednaut"
+documentation = "https://docs.rs/seednaut"
+
+[dependencies]
+anyhow = "1.0.100"
+base64 = "0.22.1"
+bip39 = "2.2.0"
+chrono = "0.4.42"
+clap = { version = "4.5.51", features = ["derive"] }
+color-print = "0.3.7"
+console = "0.16.1"
+directories = "6.0.0"
+filetime = "0.2.26"
+hex = "0.4.3"
+hkdf = "0.12.4"
+hmac = "0.12.1"
+indicatif = "0.18.3"
+inquire = "0.9.1"
+prost = "0.13"
+prost-reflect = { version = "0.15.3", features = ["serde"] }
+rayon = "1.11.0"
+regex = "1.12.2"
+rusqlite = { version = "0.37.0", features = ["bundled"] }
+serde = "1.0.228"
+serde_json = "1.0.145"
+sha2 = "0.10.9"
+tar = "0.4.45"
+tempfile = "3.23.0"
+thiserror = "2.0.17"
+tink-core = { version = "0.3.0", features = ["insecure"] }
+tink-proto = "0.3.0"
+tink-streaming-aead = "0.3.0"
+walkdir = "2.5.0"
+zip = "6.0.0"
+zstd = "0.13.3"
+
+[build-dependencies]
+prost-build = "0.13"
+

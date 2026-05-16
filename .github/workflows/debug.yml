@@ -1,0 +1,44 @@
+name: Debug Runner
+
+env:
+  CARGO_TERM_COLOR: always
+  CLICOLOR_FORCE: 1
+  TERM: xterm-256color
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID of the CI workflow to get binaries from"
+        required: true
+      os:
+        description: "Runner OS"
+        required: true
+        default: "ubuntu-latest"
+        type: choice
+        options: [ubuntu-latest, macos-latest, windows-latest]
+
+jobs:
+  debug:
+    runs-on: ${{ inputs.os }}
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download binary from CI
+        uses: actions/download-artifact@v4
+        with:
+          name: debug-binary-${{ inputs.os }}
+          run-id: ${{ inputs.run_id }} # Use the manual input
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: target/debug/
+
+      - name: Make executable
+        if: runner.os != 'Windows'
+        run: chmod +x target/debug/seednaut
+
+      - name: Start tmate session
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 30

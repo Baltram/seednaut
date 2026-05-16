@@ -1,0 +1,34 @@
+name: MSRV Check
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  msrv:
+    name: Check MSRV (1.88.0)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust 1.88.0
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.88.0
+
+      - name: Cache cargo registry
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "23.x"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: cargo build --locked
+
+      - name: Run tests
+        run: cargo test --locked
