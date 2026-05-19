@@ -41,12 +41,6 @@ jobs:
         with:
           cache-bin: false # Workaround for potentially broken macOS runner image
 
-      - name: Install protoc
-        uses: arduino/setup-protoc@v3
-        with:
-          version: "23.x"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build
         run: cargo build --locked --verbose
 

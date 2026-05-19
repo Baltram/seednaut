@@ -7,7 +7,7 @@ Inspection, verification, and extraction utility for [`Seedvault`](https://githu
 <p>
   <a href="#quick-start">Quick Start</a> •
   <a href="#cli-examples">CLI Examples</a> •
-  <a href="#installation">Installation</a>
+  <a href="#development-notes">Development notes</a>
 </p>
 
 ---
@@ -43,9 +43,24 @@ You will also need the 12-word mnemonic phrase that was used to create the backu
 
 ### 1. Get Seednaut
 
-Follow the [installation](#installation) instructions for building from source or installing via `cargo`.
+You can either:
 
-Alternatively, download a prebuilt binary for your operating system from the [`Releases`](https://github.com/Baltram/seednaut/releases) page. Most users should download one of:
+#### A) Install from `crates.io` (Rust >=1.88)
+
+```bash
+cargo install seednaut
+```
+
+#### B) Build from source (Rust >=1.88)
+
+```bash
+git clone https://github.com/Baltram/seednaut && cd seednaut
+cargo build --release
+```
+
+#### C) Download a prebuilt binary
+
+Go to the [`Releases`](https://github.com/Baltram/seednaut/releases) page and download the file matching your operating system:
 
 | Platform            | File match                  |
 | ------------------- | --------------------------- |
@@ -114,30 +129,9 @@ echo "$MY_MNEMONIC" | seednaut verify /path/to/backup
 
 Run `seednaut help` or `seednaut help <command>` for full CLI documentation.
 
-## Installation
-
-### Prerequisites
-Compiling Seednaut requires Rust 1.88 or newer (via [rustup](https://rustup.rs/)) and `protoc` (the Protocol Buffers compiler):
-* **Debian/Ubuntu:** `sudo apt install protobuf-compiler`
-* **Arch Linux:** `sudo pacman -S protobuf`
-* **macOS:** `brew install protobuf`
-* **Windows:** `winget install protobuf`
-
-### From `crates.io`
-
-```bash
-cargo install seednaut
-```
-
-### From source
-
-```bash
-git clone https://github.com/Baltram/seednaut
-cd seednaut
-cargo build --release
-```
-
 ## Development notes
+
+Seednaut ships with pre-generated protobuf bindings. Maintainers can regenerate bindings with `cargo run -p xtask` after changing `.proto` files.
 
 AI coding tools were used during development. Generated code, architecture, crate selection were manually reviewed and iterated on extensively before release.
 

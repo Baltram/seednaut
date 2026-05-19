@@ -9,8 +9,8 @@ static DESCRIPTOR_POOL: OnceLock<DescriptorPool> = OnceLock::new();
 /// Get or initialize the descriptor pool
 fn get_descriptor_pool() -> &'static DescriptorPool {
     DESCRIPTOR_POOL.get_or_init(|| {
-        let descriptor_bytes = include_bytes!(concat!(env!("OUT_DIR"), "/descriptor.bin"));
-        DescriptorPool::decode(descriptor_bytes.as_ref()).expect("Failed to decode descriptor pool")
+        let descriptor_bytes = crate::proto::DESCRIPTOR_BYTES;
+        DescriptorPool::decode(descriptor_bytes).expect("Failed to decode descriptor pool")
     })
 }
 

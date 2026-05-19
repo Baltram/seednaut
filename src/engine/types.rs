@@ -110,22 +110,8 @@ impl_id_traits!(AppChunkId, "AppChunkId");
 impl_id_traits!(BlobId, "BlobId");
 impl_id_traits!(FileChunkId, "FileChunkId");
 
-/// Contains all prost-generated structs from the .proto files.
 pub mod pb {
-    pub mod seedvault {
-        #![allow(clippy::nursery, clippy::pedantic)]
-        include!(concat!(
-            env!("OUT_DIR"),
-            "/com.stevesoltys.seedvault.proto.rs"
-        ));
-    }
-    pub mod calyxos {
-        #![allow(clippy::nursery, clippy::pedantic)]
-        include!(concat!(
-            env!("OUT_DIR"),
-            "/org.calyxos.backup.storage.backup.rs"
-        ));
-    }
+    pub use crate::proto::{calyxos, seedvault};
 }
 
 /// An enum representing the two types of snapshots.

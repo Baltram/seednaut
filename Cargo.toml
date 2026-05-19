@@ -1,6 +1,6 @@
 [package]
 name = "seednaut"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.88.0"
 exclude = [".github/"]
@@ -12,6 +12,9 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/Baltram/seednaut"
 homepage = "https://github.com/Baltram/seednaut"
 documentation = "https://docs.rs/seednaut"
+
+[workspace]
+members = [".", "xtask"]
 
 [dependencies]
 anyhow = "1.0.100"
@@ -45,7 +48,4 @@ tink-streaming-aead = "0.3.0"
 walkdir = "2.5.0"
 zip = "6.0.0"
 zstd = "0.13.3"
-
-[build-dependencies]
-prost-build = "0.13"
 

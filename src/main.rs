@@ -9,6 +9,7 @@ mod app;
 mod cli;
 mod commands;
 mod engine;
+mod proto;
 mod ui;
 mod util;
 
