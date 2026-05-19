@@ -7,7 +7,7 @@ Inspection, verification, and extraction utility for [`Seedvault`](https://githu
 <p>
   <a href="#quick-start">Quick Start</a> •
   <a href="#cli-examples">CLI Examples</a> •
-  <a href="#build">Build</a>
+  <a href="#installation">Installation</a>
 </p>
 
 ---
@@ -21,7 +21,7 @@ Various Android distributions like CalyxOS, LineageOS, /e/OS and GrapheneOS inte
 * Recover specific files without a full device restore
 * Unpack app backup data (.tar, .db) into accessible formats
 
-It runs purely offline and supports current Seedvault app and file backup formats (namely v2 and v0, respectively). For older backups you can try some of the [`other 3rd party tools`](https://github.com/seedvault-app/seedvault#third-party-tools).
+It runs purely offline and supports current Seedvault backup formats (v2 app backup and v0 file backup formats). For older backups you can try some of the [`other 3rd party tools`](https://github.com/seedvault-app/seedvault#third-party-tools).
 
 ![Animated Seednaut demo](./assets/demo.svg)
 
@@ -41,9 +41,11 @@ Note: some file managers hide directories beginning with `.` by default.
 
 You will also need the 12-word mnemonic phrase that was used to create the backup.
 
-### 1. Download Seednaut
+### 1. Get Seednaut
 
-Download [`the latest release`](https://github.com/Baltram/seednaut/releases) for your operating system from the Releases page. Most users should download one of:
+Follow the [installation](#installation) instructions for building from source or installing via `cargo`.
+
+Alternatively, download a prebuilt binary for your operating system from the [`Releases`](https://github.com/Baltram/seednaut/releases) page. Most users should download one of:
 
 | Platform            | File match                  |
 | ------------------- | --------------------------- |
@@ -112,7 +114,7 @@ echo "$MY_MNEMONIC" | seednaut verify /path/to/backup
 
 Run `seednaut help` or `seednaut help <command>` for full CLI documentation.
 
-## Build
+## Installation
 
 ### Prerequisites
 Compiling Seednaut requires Rust 1.88 or newer (via [rustup](https://rustup.rs/)) and `protoc` (the Protocol Buffers compiler):
@@ -127,7 +129,7 @@ Compiling Seednaut requires Rust 1.88 or newer (via [rustup](https://rustup.rs/)
 cargo install seednaut
 ```
 
-### From GitHub
+### From source
 
 ```bash
 git clone https://github.com/Baltram/seednaut
