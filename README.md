@@ -1,5 +1,5 @@
 # Seednaut
-Inspection, verification, and extraction utility for [`Seedvault`](https://github.com/seedvault-app/seedvault) backups.
+Inspect, verify and extract files from [`Seedvault`](https://github.com/seedvault-app/seedvault) backups.
 
 <a href="https://github.com/Baltram/seednaut/actions"><img src="https://img.shields.io/github/actions/workflow/status/Baltram/seednaut/ci.yml" alt="Build Status"></a>
 <a href="https://crates.io/crates/seednaut"><img src="https://img.shields.io/crates/v/seednaut.svg" alt="Crates.io"></a>
@@ -12,9 +12,9 @@ Inspection, verification, and extraction utility for [`Seedvault`](https://githu
 
 ---
 
-Various Android distributions like CalyxOS, LineageOS, /e/OS and GrapheneOS integrate Seedvault as their main backup mechanism. There are currently no official tools for inspecting such backups off-device. To help fill that gap:
+Various Android distributions like CalyxOS, GrapheneOS, iodéOS, LineageOS and /e/OS integrate Seedvault as their main backup mechanism. There are currently no official tools for inspecting such backups off-device. To help fill that gap:
 
-**Seednaut** is a desktop command-line utility that lets you
+**Seednaut** is a desktop command-line and terminal UI utility that lets you
 
 * Verify that backups are intact
 * Explore backup contents before relying on them
@@ -71,21 +71,9 @@ Go to the [`Releases`](https://github.com/Baltram/seednaut/releases) page and do
 
 ### 2. Run Seednaut
 
-Running Seednaut without arguments enters an interactive mode. It guides you through the steps of locating the backup, entering your mnemonic and performing the inspection/verification/extraction.
+Running Seednaut without arguments starts the interactive TUI mode. It guides you through the steps of locating the backup, entering your mnemonic and performing the inspection/verification/extraction. Depending on your installation method, enter `seednaut` or `./seednaut` in a shell.
 
-Linux/macOS:
-
-```bash
-chmod +x ./seednaut
-./seednaut
-```
-
-Windows:
-
-```powershell
-.\seednaut.exe
-```
-or just double click the .exe or drag&drop your backup onto it.
+On Windows, you can simply double click `seednaut.exe` or drag&drop your backup onto it.
 
 ## CLI Examples
 
@@ -136,3 +124,12 @@ Seednaut ships with pre-generated protobuf bindings. Maintainers can regenerate 
 AI coding tools were used during development. Generated code, architecture, crate selection were manually reviewed and iterated on extensively before release.
 
 Please note that, while developed with security in mind, Seednaut has not undergone professional security auditing and is provided on a best-effort basis.
+
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0
+- MIT license
+
+at your option.
