@@ -43,22 +43,43 @@ You will also need the 12-word mnemonic phrase that was used to create the backu
 
 ### 1. Get Seednaut
 
-You can either:
+Choose one of the following methods:
 
-#### A) Install from `crates.io` (Rust >=1.88)
+#### A) pkgsrc (NetBSD, SmartOS, Linux, etc.)
+
+If you use `pkgin`:
+
+```bash
+pkgin install seednaut
+```
+
+Or via `pkg_add`:
+
+```bash
+pkg_add seednaut
+```
+
+Build from source using `pkgsrc`:
+
+```bash
+cd /usr/pkgsrc/sysutils/seednaut  # Adjust pkgsrc path as needed
+make install
+```
+
+#### B) Install from `crates.io` (Rust >=1.88)
 
 ```bash
 cargo install seednaut
 ```
 
-#### B) Build from source (Rust >=1.88)
+#### C) Build from source (Rust >=1.88)
 
 ```bash
 git clone https://github.com/Baltram/seednaut && cd seednaut
 cargo build --release
 ```
 
-#### C) Download a prebuilt binary
+#### D) Download a prebuilt binary
 
 Go to the [`Releases`](https://github.com/Baltram/seednaut/releases) page and download the file matching your operating system:
 
