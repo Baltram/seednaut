@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH seednaut-verify 1  "verify " 
+.SH NAME
+seednaut\-verify \- Verify the integrity of all chunks in snapshots
+.SH SYNOPSIS
+\fBseednaut verify\fR <\fIPATH\fR> [\fISNAPSHOTS\fR] 
+.SH DESCRIPTION
+Verify the integrity of all chunks in snapshots
+.SH OPTIONS
+.TP
+<\fIPATH\fR>
+The input path (snapshot file or directory)
+.TP
+[\fISNAPSHOTS\fR]
+Indices of snapshots to target. If omitted, all snapshots are targeted

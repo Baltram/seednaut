@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH seednaut-inspect 1  "inspect " 
+.SH NAME
+seednaut\-inspect \- Inspect the contents of snapshots (packages, files)
+.SH SYNOPSIS
+\fBseednaut inspect\fR <\fIPATH\fR> [\fISNAPSHOTS\fR] 
+.SH DESCRIPTION
+Inspect the contents of snapshots (packages, files)
+.SH OPTIONS
+.TP
+<\fIPATH\fR>
+The input path (snapshot file or directory)
+.TP
+[\fISNAPSHOTS\fR]
+Indices of snapshots to target. If omitted, all snapshots are targeted

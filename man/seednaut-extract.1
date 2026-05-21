@@ -1,0 +1,25 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH seednaut-extract 1  "extract " 
+.SH NAME
+seednaut\-extract \- Extract files and data from snapshots
+.SH SYNOPSIS
+\fBseednaut extract\fR <\fB\-o\fR|\fB\-\-out\fR> [\fB\-m\fR|\fB\-\-match\fR] [\fB\-e\fR|\fB\-\-export\fR] <\fIPATH\fR> [\fISNAPSHOTS\fR] 
+.SH DESCRIPTION
+Extract files and data from snapshots
+.SH OPTIONS
+.TP
+\fB\-o\fR, \fB\-\-out\fR \fI<OUT_DIR>\fR
+Output directory for extracted files
+.TP
+\fB\-m\fR, \fB\-\-match\fR \fI<PATTERN_STR>\fR
+Regex to filter packages or file paths for extraction
+.TP
+\fB\-e\fR, \fB\-\-export\fR
+Unpack archives (.tar) and convert databases (.db) to a readable format
+.TP
+<\fIPATH\fR>
+The input path (snapshot file or directory)
+.TP
+[\fISNAPSHOTS\fR]
+Indices of snapshots to target. If omitted, all snapshots are targeted

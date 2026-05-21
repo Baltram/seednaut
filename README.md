@@ -119,7 +119,7 @@ Run `seednaut help` or `seednaut help <command>` for full CLI documentation.
 
 ## Development notes
 
-Seednaut ships with pre-generated protobuf bindings. Maintainers can regenerate bindings with `cargo run -p xtask` after changing `.proto` files.
+Generated man pages are available under `man/` and can be regenerated with `cargo run -p xtask -- man`. Similarly, protobuf bindings can be regenerated with `cargo run -p xtask -- proto`.
 
 AI coding tools were used during development. Generated code, architecture, crate selection were manually reviewed and iterated on extensively before release.
 
