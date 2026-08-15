@@ -34,7 +34,8 @@ pub fn init_context(input_path: PathBuf) -> Result<AppContext> {
     let (snapshots, failed) = (discovery.snapshots, discovery.failed);
 
     let msg = if snapshots.is_empty() && failed.is_empty() {
-        "No backup data found at this location.".to_string()
+        "No supported SeedVault snapshots found (expected .snapshot or .SeedSnap files)."
+            .to_string()
     } else if snapshots.is_empty() {
         "No snapshots could be decrypted. The mnemonic may be incorrect.".to_string()
     } else if !failed.is_empty() {
