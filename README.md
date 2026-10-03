@@ -72,14 +72,22 @@ make install
 cargo install seednaut
 ```
 
-#### C) Build from source (Rust >=1.88)
+#### C) Install via nix
+
+Works on any linux/mac that has nix installed.
+
+```bash
+nix shell nixpkgs#seednaut
+```
+
+#### D) Build from source (Rust >=1.88)
 
 ```bash
 git clone https://github.com/Baltram/seednaut && cd seednaut
 cargo build --release
 ```
 
-#### D) Download a prebuilt binary
+#### E) Download a prebuilt binary
 
 Go to the [`Releases`](https://github.com/Baltram/seednaut/releases) page and download the file matching your operating system:
 
