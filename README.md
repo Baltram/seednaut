@@ -7,6 +7,7 @@ Inspect, verify and extract files from [`Seedvault`](https://github.com/seedvaul
 <p>
   <a href="#quick-start">Quick Start</a> •
   <a href="#cli-examples">CLI Examples</a> •
+  <a href="#installation">Installation</a> •
   <a href="#development-notes">Development notes</a>
 </p>
 
@@ -43,53 +44,9 @@ You will also need the 12-word mnemonic phrase that was used to create the backu
 
 ### 1. Get Seednaut
 
-Choose one of the following methods:
+You can [build from source](#build-from-source), use `cargo install seednaut`, or install via [pkgsrc](#pkgsrc) or [Nix](#nix).
 
-#### A) pkgsrc (NetBSD, SmartOS, Linux, etc.)
-
-If you use `pkgin`:
-
-```bash
-pkgin install seednaut
-```
-
-Or via `pkg_add`:
-
-```bash
-pkg_add seednaut
-```
-
-Build from source using `pkgsrc`:
-
-```bash
-cd /usr/pkgsrc/sysutils/seednaut  # Adjust pkgsrc path as needed
-make install
-```
-
-#### B) Install from `crates.io` (Rust >=1.88)
-
-```bash
-cargo install seednaut
-```
-
-#### C) Install via nix
-
-Works on any linux/mac that has nix installed.
-
-```bash
-nix shell nixpkgs#seednaut
-```
-
-#### D) Build from source (Rust >=1.88)
-
-```bash
-git clone https://github.com/Baltram/seednaut && cd seednaut
-cargo build --release
-```
-
-#### E) Download a prebuilt binary
-
-Go to the [`Releases`](https://github.com/Baltram/seednaut/releases) page and download the file matching your operating system:
+Alternatively, [download a prebuilt binary](https://github.com/Baltram/seednaut/releases) matching your operating system:
 
 | Platform            | File match                  |
 | ------------------- | --------------------------- |
@@ -145,6 +102,70 @@ echo "$MY_MNEMONIC" | seednaut verify /path/to/backup
 ```
 
 Run `seednaut help` or `seednaut help <command>` for full CLI documentation.
+
+## Installation
+
+For prebuilt binaries, see [Quick start](#1-get-seednaut).
+
+### Cargo
+
+Install from [crates.io](https://crates.io/crates/seednaut) with Rust >=1.88:
+
+```bash
+cargo install seednaut
+```
+
+### pkgsrc
+
+Available on NetBSD, SmartOS, Linux, and other platforms.
+
+If you use `pkgin`:
+
+```bash
+pkgin install seednaut
+```
+
+Or via `pkg_add`:
+
+```bash
+pkg_add seednaut
+```
+
+Build from source using `pkgsrc`:
+
+```bash
+cd /usr/pkgsrc/sysutils/seednaut  # Adjust pkgsrc path as needed
+make install
+```
+
+### Nix
+
+With Nix installed, add Seednaut to your user profile:
+
+```bash
+nix profile install nixpkgs#seednaut
+```
+
+Or try it in a temporary shell:
+
+```bash
+nix shell nixpkgs#seednaut
+```
+
+Run `seednaut` inside that shell; `exit` returns to your previous shell.
+
+Depending on your Nix configuration, you may need to [enable](https://nix.dev/manual/nix/stable/command-ref/conf-file.html#conf-experimental-features) the `nix-command` and `flakes` features. Your Nixpkgs revision must include Seednaut.
+
+### Build from source
+
+Requires Rust >=1.88:
+
+```bash
+git clone https://github.com/Baltram/seednaut && cd seednaut
+cargo build --release
+```
+
+The executable is placed in `target/release/seednaut` (`target/release/seednaut.exe` on Windows).
 
 ## Development notes
 
