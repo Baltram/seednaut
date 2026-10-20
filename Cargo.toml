@@ -46,6 +46,6 @@ tink-core = { version = "0.3.0", features = ["insecure"] }
 tink-proto = "0.3.0"
 tink-streaming-aead = "0.3.0"
 walkdir = "2.5.0"
-zip = "6.0.0"
+zip = "9.0.0"
 zstd = "0.13.3"
 
