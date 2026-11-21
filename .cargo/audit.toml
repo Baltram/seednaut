@@ -1,0 +1,8 @@
+[advisories]
+ignore = [
+    # RUSTSEC-2026-0459 (SQLite WAL uninitialized memory): requires opening a crafted
+    # db + sibling -wal pair. Seednaut opens extracted DB bytes from a fresh random
+    # temp file, so no attacker-supplied -wal can exist. Fix needs rusqlite >=0.41
+    # (MSRV 1.89); revisit when raising MSRV.
+    "RUSTSEC-2026-0459",
+]
