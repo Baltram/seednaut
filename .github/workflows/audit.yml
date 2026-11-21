@@ -1,8 +1,9 @@
 name: Security Audit
 
 on:
-  schedule:
-    - cron: "0 5 * * 1"
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
 
 jobs:
@@ -12,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: dtolnay/rust-toolchain@stable
-
       - name: Install cargo-audit
-        run: cargo install cargo-audit
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-audit
 
       - name: Run audit
         run: cargo audit
